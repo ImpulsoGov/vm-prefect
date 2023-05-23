@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2023 ImpulsoGov <contato@impulsogov.org>
+#
+# SPDX-License-Identifier: MIT
+
+
+# mova este arquivo para o diretório /etc/systemd/system/
+
+
+[Unit]
+After=network.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+StartLimitIntervalSec=500
+StartLimitBurst=5
+
+[Service]
+Restart=always
+RestartSec=10
+WorkingDirectory=/home/prefect
+ExecStart=/bin/bash /home/prefect/server-start.sh
+User=prefect
+Group=prefect
+Environment=PREFECT_HOME=/home/prefect
+Environment=PREFECT_PROFILES_PATH=/home/prefect/.prefect/profiles.toml
+
+[Install]
+WantedBy=default.target

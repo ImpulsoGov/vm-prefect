@@ -1,0 +1,14 @@
+  GNU nano 5.4                                                                        .prefect/profiles.toml                                                                                  
+# SPDX-FileCopyrightText: 2023 ImpulsoGov <contato@impulsogov.org>
+#
+# SPDX-License-Identifier: MIT
+
+
+active = "default"
+
+[profiles.default]
+PREFECT_HOME = "/home/prefect"
+PREFECT_UI_URL = "https://${PREFECT_API_USUARIO}:${PREFECT_API_SENHA}@${PREFECT_DOMINIO}" 
+PREFECT_UI_API_URL = "https://${PREFECT_API_USUARIO}:${PREFECT_API_SENHA}@${PREFECT_DOMINIO}/api"
+#PREFECT_API_URL = "http://127.0.0.1:4200/api"
+PREFECT_API_URL = "https://${PREFECT_API_USUARIO}:${PREFECT_API_SENHA}@${PREFECT_DOMINIO}/api"
