@@ -1,0 +1,12 @@
+# mova este arquivo para o diretório /etc/systemd/system/
+
+
+[Unit]
+Description=agenda remocao de containeres sem uso
+
+[Timer]
+OnUnitActiveSec=1800s
+OnBootSec=10s
+
+[Install]
+WantedBy=timers.target

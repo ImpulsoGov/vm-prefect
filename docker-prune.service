@@ -1,0 +1,9 @@
+# mova este arquivo para o diretório /etc/systemd/system/
+
+
+[Unit]
+Description=remove containeres sem uso
+
+[Service]
+Type=oneshot
+ExecStart=docker system prune --all --volumes

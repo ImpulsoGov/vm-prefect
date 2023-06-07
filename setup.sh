@@ -69,6 +69,8 @@ rsync --archive --chown=prefect:prefect ~/.ssh /home/prefect
 
 # mover arquivos
 cp .env /home/prefect/.env
+cp docker-prune.service /etc/systemd/system/
+cp docker-prune.timer /etc/systemd/system/
 cp prefect-agent.service /etc/systemd/system/prefect-agent.service
 cp prefect-server.service /etc/systemd/system/prefect-server.service
 cp agent-start.sh /home/prefect/agent-start.sh
@@ -116,8 +118,10 @@ systemctl reload nginx
 
 # habilitar serviços
 systemctl daemon-reload
+systemctl enable docker-prune.timer
 systemctl enable prefect-server.service
 systemctl enable prefect-agent.service
+systemctl start docker-prune.timer
 systemctl start prefect-server.service
 systemctl start prefect-agent.service
 ufw --force enable
